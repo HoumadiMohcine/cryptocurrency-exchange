@@ -12,9 +12,20 @@ public class CryptocurrencyBank {
     }
 
     public int requestTransaction(Customer buyerCustomer, int i, String bitcoin) {
+
+        for (Customer customer : customers){
+            if (customer.isSeller()){
+                return customer.getSolde();
+            }
+        }
+
+
         return 0;
     }
 
     public void addSeller(Customer sellerCustomer) {
+        sellerCustomer.setCustomerAsSeller() ;
+        this.customers.add(sellerCustomer) ;
+
     }
 }

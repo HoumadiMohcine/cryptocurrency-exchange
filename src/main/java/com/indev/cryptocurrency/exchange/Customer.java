@@ -6,6 +6,7 @@ public class Customer {
     private int balance ;
     private String customerType = "";
 
+
     public Customer(int solde , String type){
         this.solde = solde ;
         this.currencyType = type ;
@@ -29,7 +30,11 @@ public class Customer {
 
     @Override
     public String toString() {
-        return balance + ":$," + solde + ":" + currencyType ;
+        String str = "" ;
+        if(currencyType == null && solde == 0){
+            return balance + ":$" ;
+        }
+        return balance + ":$" + "," + solde + ":" + currencyType ;
     }
 
     public Customer withBalance(int i) {
@@ -40,7 +45,15 @@ public class Customer {
         return this ;
     }
 
+    public int getSolde() {
+        return solde;
+    }
+
     public boolean isSeller(){
         return this.customerType.equals("seller") ;
+    }
+
+    public void setCustomerAsSeller() {
+        this.customerType ="seller" ;
     }
 }
