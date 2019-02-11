@@ -1,16 +1,22 @@
 package com.indev.cryptocurrency.exchange;
 
+
+import java.util.Currency;
+
 public class Customer {
-    private int solde ;
-    private String currencyType ;
-    private int balance ;
-    private String customerType = "";
+    int solde ;
+    String currencyType ;
+    int balance ;
+    String customerType = "";
+
+
 
 
     public Customer(int solde , String type){
         this.solde = solde ;
         this.currencyType = type ;
         balance = 0 ;
+
     }
 
     public Customer(){
@@ -30,7 +36,6 @@ public class Customer {
 
     @Override
     public String toString() {
-        String str = "" ;
         if(currencyType == null && solde == 0){
             return balance + ":$" ;
         }
@@ -39,15 +44,13 @@ public class Customer {
 
     public Customer withBalance(int i) {
         this.balance = i ;
-        //customer.account.setBalance(i);
-        //System.out.print(customer.account.toString());
-        //this.account.setBalance(i);
         return this ;
     }
 
-    public int getBoughtQuantity(int quantity , Customer buyerCustomer , String currencyType) {
+    public int getBoughtQuantity(int quantity , int number , String currencyType) {
 
         if(quantity <= solde && currencyType.equals(this.currencyType) ){
+
             this.solde -= quantity ;
             this.balance += quantity ;
             return quantity;
@@ -65,9 +68,9 @@ public class Customer {
     }
 
 
-    public void updateCustomerSolde(int solde , String bitcoin){
+    public void updateCustomerSolde(int solde , int number ,String bitcoin){
         this.solde += solde ;
-        this.balance -= solde ;
+        this.balance += solde ;
         this.currencyType = bitcoin ;
     }
 }
