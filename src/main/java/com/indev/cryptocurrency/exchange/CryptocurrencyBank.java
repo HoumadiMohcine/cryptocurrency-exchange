@@ -15,7 +15,8 @@ public class CryptocurrencyBank {
 
         for (Customer customer : customers){
             if (customer.isSeller()){
-                return customer.getSolde();
+                buyerCustomer.updateCustomerSolde(i , bitcoin);
+                return customer.getBoughtQuantity(i , buyerCustomer , bitcoin);
             }
         }
 

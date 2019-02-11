@@ -45,8 +45,15 @@ public class Customer {
         return this ;
     }
 
-    public int getSolde() {
-        return solde;
+    public int getBoughtQuantity(int quantity , Customer buyerCustomer , String currencyType) {
+
+        if(quantity <= solde && currencyType.equals(this.currencyType) ){
+            this.solde -= quantity ;
+            this.balance += quantity ;
+            return quantity;
+        }
+
+        return 0 ;
     }
 
     public boolean isSeller(){
@@ -55,5 +62,12 @@ public class Customer {
 
     public void setCustomerAsSeller() {
         this.customerType ="seller" ;
+    }
+
+
+    public void updateCustomerSolde(int solde , String bitcoin){
+        this.solde += solde ;
+        this.balance -= solde ;
+        this.currencyType = bitcoin ;
     }
 }
